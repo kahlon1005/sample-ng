@@ -19,13 +19,12 @@ jobs:
     - name: Set up Node.js version
       uses: actions/setup-node@v1
       with:
-        node-version: '14.x'
+        node-version: '12.x'
 
     - name: npm install, build, and test
       run: |
         npm install
         npm run build --prod
-
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
       with:
@@ -51,5 +50,5 @@ jobs:
       with:
         app-name: 'sample-ng'
         slot-name: 'production'
-        publish-profile: $
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_cfe325834b294954993514b99d64b62a }}
         package: ./dist/sample-ng
